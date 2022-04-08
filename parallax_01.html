@@ -46,7 +46,7 @@
             <li><a href="#section6">menu6</a></li>
         </ul>
     </nav>
-    
+
     <div id="contents">
         <div id="section1"><h2>Time is <strong>gold</strong></h2></div>
         <div id="section2"><h2>Seeing is <strong>believing</strong></h2></div>
@@ -59,7 +59,19 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script>
+        var nav = $("#nav ul li");
+        var cont = $("#contents > div")
 
+        nav.click(function(e){
+            e.preventDefault();
+            var target = $(this);
+            var index = target.index();
+
+            var section = cont.eq(index);
+            var offset = section.offset().top;
+
+            $("html, body").animate({scrollTop: offset}, 600,"easeInOutExpo");
+        })
     </script>
 </body>
 </html>
